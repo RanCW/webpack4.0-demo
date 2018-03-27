@@ -12,7 +12,7 @@
    cd webpack-demo
    npm init
    以上就是创建一个webpack-demo文件夹，然后在里面初始化项目将会得到以结构：
-   ![image](./material/proinit)
+   ![image](./material/proinit.jpg)
 
 #### webpack 安装
    通过npm install webpack webpack-cli -D，这里不同的是，在webpack4.0当中将多安装一个webpack-cli。
