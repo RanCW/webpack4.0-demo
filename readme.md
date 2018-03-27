@@ -70,6 +70,6 @@
             })
         ]
     ```
-    讲一下这里面常用的一个配置。title，这里配置主要是设置生成html页面的title内容，但是这里要注意的是，这里设置了title，在模板文件里面一定要将title写为：
+   讲一下这里面常用的一个配置。title，这里配置主要是设置生成html页面的title内容，但是这里要注意的是，这里设置了title，在模板文件里面一定要将title写为：
         <title><%=htmlWebpackPlugin.options.title%></title>
-    关于HtmlWebpackPlugin有很多的配置项，这里就不做一一解释了[点我了解HtmlWebpackPlugin配置项目](https://github.com/jantimon/html-webpack-plugin#configuration)
+   关于HtmlWebpackPlugin有很多的配置项，这里就不做一一解释了[点我了解HtmlWebpackPlugin配置项目](https://github.com/jantimon/html-webpack-plugin#configuration)
