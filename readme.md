@@ -57,7 +57,7 @@
    其实plugins就是一个数组，里面放所有的plugin的实例。
 
    这里为了后面我们的所有操作都能够看到效果，我这里就先讲一个插件，就是自动生成html文件的插件HtmlWebpackPlugin
-   * HtmlWebpackPlugin
+ * HtmlWebpackPlugin
     1. 安装npm install --save-dev html-webpack-plugin
     2. 使用如下：
 
@@ -73,3 +73,47 @@
    讲一下这里面常用的一个配置。title，这里配置主要是设置生成html页面的title内容，但是这里要注意的是，这里设置了title，在模板文件里面一定要将title写为：
         <title><%=htmlWebpackPlugin.options.title%></title>
    关于HtmlWebpackPlugin有很多的配置项，这里就不做一一解释了[点我了解HtmlWebpackPlugin配置项目](https://github.com/jantimon/html-webpack-plugin#configuration)
+ * clean-webpack-plugin
+   1. 安装方法 npm i clean-webpack-plugin --save-dev
+   2. 使用方法：
+   ```javascrip
+        plugins:[
+            new CleanWebpackPlugin(path.resolve(__dirname,'dist'))
+        ]
+   ```
+   该插件主要作用是清除文件夹内容的作用[【点我了解clean-webpack-plugin】](https://www.npmjs.com/package/clean-webpack-plugin)
+
+#### Loader（模块加载器）
+   loader就是webpack里面的重头戏了，loader担任着将原文件转换成webpack能够识别内容的重要角色，要是没有loader，webpack将不能识别css、img、font文件等等。
+
+  1. 处理css文件
+    * 需要loader:[【style-loader】](https://www.webpackjs.com/loaders/style-loader/),[【css-loader】](https://www.webpackjs.com/loaders/css-loader/)
+    * 使用方法,里面有很多的配置项，这里就不一一解释了，主要配置了一些比较实用的。
+
+    ```javascript
+        module:{
+            rules:[
+                {
+                    test:/\.css/,
+                    use:[
+                        {
+                            loader:'style-loader'，
+                            options:{
+                                sourceMap:true//添加映射，能能够看到样式来自哪个模块
+                            }
+                        },
+                        {
+                            loader:'css-loader',
+                            options:{
+                                sourceMap:true//添加映射，能能够看到样式来自哪个模块
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+    ```
+   运行结果如下：
+
+   ![img](./material/css01.png)
+   很显然，样式加载在style标签里面根本不是我们不想要的，这样要是上线，那岂不是显得太不专业了，那么请交给[ExtractTextWebpackPlugin](https://www.webpackjs.com/plugins/extract-text-webpack-plugin/)
